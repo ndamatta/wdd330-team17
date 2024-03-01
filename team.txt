@@ -4,3 +4,5 @@ Team members:
 - Natanael da Matta
 - Sigrid Müller
 - Wilson Romero
+- Tyler Mills
+- Lin Chih Yun

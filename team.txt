@@ -5,3 +5,4 @@ Team members:
 - Sigrid Müller
 - Wilson Romero
 - Tyler Mills
+- Lin Chih Yun

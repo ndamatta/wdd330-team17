@@ -8,7 +8,7 @@ function addProductToCart(product) {
   if (!Array.isArray(cartItems)) {
     cartItems = [];
   }
-  // Agregar el nuevo producto al array de productos del carrito
+  // add new item to cart
   cartItems.push(product);
   setLocalStorage("so-cart", cartItems);
 }

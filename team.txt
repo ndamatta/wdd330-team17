@@ -5,4 +5,8 @@ Team members:
 - Sigrid Müller
 - Wilson Romero
 - Tyler Mills
+<<<<<<< HEAD
 - Cassie Smith
+=======
+- Lin Chih Yun
+>>>>>>> 85eb5299712c763c67175c8ac342e3d500af9223

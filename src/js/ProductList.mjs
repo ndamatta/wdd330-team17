@@ -35,7 +35,7 @@ export default class ProductListing {
     return filterData
   }
   renderList(list) {
-    renderListWithTemplate( productCardTemplate, this.listElement, list)
+    renderListWithTemplate(productCardTemplate, this.listElement, list)
     // const htmlStrings = list.map((product) => productCardTemplate(product));
     // //this.listElement.innerHTML = htmlStrings.join("");
     // this.listElement.insertAdjacentHTML('afterbegin', htmlStrings.join(''));

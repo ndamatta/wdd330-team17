@@ -25,6 +25,18 @@ export function setClick(selector, callback) {
 export function getParams(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get(param)
-  return product
+  const product = urlParams.get(param);
+  return product;
+}
+
+export function renderListWithTemplate(
+  templateFn,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false,
+) {
+  clear ? (parentElement.innerHTML = "") : "";
+  const renderString = list.map(templateFn);
+  parentElement.insertAdjacentHTML(position, renderString.join(""));
 }

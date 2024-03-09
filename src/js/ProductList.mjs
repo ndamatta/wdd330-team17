@@ -32,7 +32,11 @@ export default class ProductList {
   // render after doing the first stretch
   renderList(list) {
     const filteredTents = this.filterTents(list); // Filter the list of tents
-    renderListWithTemplate(productCardTemplate, this.listElement, filteredTents);
+    renderListWithTemplate(
+      productCardTemplate,
+      this.listElement,
+      filteredTents,
+    );
   }
 
   // render before doing the stretch

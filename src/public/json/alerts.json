@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Hey!",
+    "body": "Don't miss out our best winter deals!",
+    "type": "primary"
+  },
+  {
+    "title": "Be aware!",
+    "body": "Website promotions do not apply for on site purchases",
+    "type": "danger"
+  }
+]

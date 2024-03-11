@@ -310,3 +310,8 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+/* task by cora total-in-cart */
+.hide {
+  display: none;
+}

@@ -44,3 +44,14 @@ export function getParam(param) {
   const product = urlParams.get(param);
   return product;
 }
+  const product = urlParams.get(param)
+  return product
+}
+
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+  if (clear) {
+    parentElement.innHTML = ""
+  }
+  const htmlStrings = list.map((product) => templateFn(product));
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}

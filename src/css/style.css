@@ -135,6 +135,7 @@ button {
 }
 /* Styles for product lists */
 .product-card {
+  position: relative;
   flex: 1 1 45%;
   margin: 0.25em;
   padding: 0.5em;
@@ -220,3 +221,13 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+.remove-item {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: rgb(228, 13, 13); 
+  cursor: pointer;
+}
+
+

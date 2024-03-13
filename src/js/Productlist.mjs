@@ -4,6 +4,7 @@ import { renderListWithTemplate } from "./utils.mjs";
 function productCardTemplate(product) {
   // Return HTML markup for a product card based on the provided product data
   return `<li class="product-card">
+    TEST TEST TEST 
     <a href="product_pages/index.html?product=${product.Id}">
       <img src="${product.Image}" alt="Image of ${product.Name}" />
       <h3 class="card__brand">${product.Brand.Name}</h3>

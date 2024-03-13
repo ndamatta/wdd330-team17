@@ -223,11 +223,13 @@ footer {
 }
 
 .remove-item {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  color: rgb(228, 13, 13); 
-  cursor: pointer;
+  cursor: pointer; /* Change cursor to pointer when hovering over the "X" */
+  color: #999; /* Default color */
+  font-size: 18px; /* Adjust font size */
+}
+
+.remove-item:hover {
+  color: #ff0000; /* Change color when hovering over the "X" */
 }
 
 

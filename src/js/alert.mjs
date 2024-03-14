@@ -1,5 +1,5 @@
 //Creates the alert template with javascript for better performance and event handling
-const singleAlertTemplate = (alertData, selfClose) => {
+const singleAlertTemplate = (alertData) => {
   //Alert container
   const alertContainer = document.createElement("section");
   alertContainer.classList.add("alert", "visible", alertData.type);

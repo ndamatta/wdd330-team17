@@ -40,3 +40,26 @@ export function renderListWithTemplate(
   const renderString = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, renderString.join(""));
 }
+
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.insertAdjacentHTML("afterbegin", template);
+  if (callback) {
+    callback(data);
+  }
+}
+
+export const loadTemplate = async (path) => {
+  let data = await fetch(path).then((res) => res.text());
+  return data;
+};
+
+export const loadHeaderFooter = async () => {
+  let [header, footer] = await Promise.all([
+    loadTemplate("/partials/header.html"),
+    loadTemplate("/partials/footer.html"),
+  ]);
+  let parentHeader = document.querySelector("header");
+  let parentFooter = document.querySelector("footer");
+  renderWithTemplate(header, parentHeader);
+  renderWithTemplate(footer, parentFooter);
+};

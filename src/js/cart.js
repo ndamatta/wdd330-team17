@@ -1,43 +1,8 @@
-import { getLocalStorage } from "./utils.mjs";
+import ShopingCart from "./shopingCart.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 
-function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
-  const cartItemsArray = Array.isArray(cartItems) ? cartItems : [];
+loadHeaderFooter();
 
-  let total = 0;
-
-  const htmlItems = cartItemsArray.map((item) => {
-    total += item.FinalPrice;
-    return cartItemTemplate(item);
-  });
-  //show content
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
-
-  //show total price
-  const totalPriceHtml = `$${total}`;
-  if (total !== 0) {
-    document.querySelector(".hide").style.display = "block";
-    document.querySelector(".cart-total").innerHTML += totalPriceHtml;
-  }
-}
-
-function cartItemTemplate(item) {
-  const newItem = `<li class="cart-card divider">
-  <a href="#" class="cart-card__image">
-    <img
-      src="${item.Image}"
-      alt="${item.Name}"
-    />
-  </a>
-  <a href="#">
-    <h2 class="card__name">${item.Name}</h2>
-  </a>
-  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
-</li>`;
-
-  return newItem;
-}
-
-renderCartContents();
+const parentElement = document.querySelector(".product-list");
+const cart = new ShopingCart(parentElement);
+cart.init();

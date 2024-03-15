@@ -328,3 +328,22 @@ footer {
 .hide {
   display: none;
 }
+
+.icon {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.icon a {
+  text-decoration: none;
+  text-align: center;
+}
+.icon div {
+  text-align: center;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+.icon img {
+  width: 10rem;
+  height: 10rem;
+}

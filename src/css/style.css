@@ -109,6 +109,20 @@ button {
 .cart:hover svg {
   fill: gray;
 }
+.cart-count {
+  content: attr(value);
+  font-size: 15px;
+  color: black;
+  background: var(--primary-color);
+  border-radius: 50%;
+  padding: 0 5px;
+  position: relative;
+  left: -20px;
+  top: -20px;
+}
+#cartIconSvg {
+  transition: transform 0.2s ease-in-out;
+}
 
 /* End cart icon styles */
 

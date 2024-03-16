@@ -62,4 +62,33 @@ export const loadHeaderFooter = async () => {
   let parentFooter = document.querySelector("footer");
   renderWithTemplate(header, parentHeader);
   renderWithTemplate(footer, parentFooter);
+  updateCartBadge(getCartCount());
 };
+
+export function setCartCount(count) {
+  localStorage.setItem("cartCount", count);
+}
+
+export function getCartCount() {
+  return parseInt(localStorage.getItem("cartCount")) || 0;
+}
+
+export function updateCartBadge(data) {
+  const cartCountElement = document.querySelector(".cart-count");
+
+  if (cartCountElement) {
+    if (data !== undefined) {
+      cartCountElement.innerText = data.toString();
+    } else {
+      const cartCount = getCartCount();
+      cartCountElement.innerText = cartCount.toString();
+    }
+  }
+}
+export function zoomAnimation() {
+  const icon = document.querySelector("#cartIconSvg");
+  icon.style.transform = "scale(1.3)";
+  setTimeout(() => {
+    icon.style.transform = "scale(1)";
+  }, 200);
+}

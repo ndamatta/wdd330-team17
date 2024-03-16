@@ -1,10 +1,10 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { capitalize, renderListWithTemplate } from "./utils.mjs";
 function productCartTemplate(product) {
   return `
   <li class="product-card">
-    <a href="product_pages/?product=${product.Id}">
+    <a href="/product_pages/?product=${product.Id}">
       <img
-        src="${product.Image}"
+        src="${product.Images.PrimaryMedium}"
         alt="${product.Name}" />
       <h3 class="card__brand">${product.Brand.Name}</h3>
       <h2 class="card__name">${product.Name}</h2>
@@ -22,8 +22,10 @@ export default class ProductListing {
   }
 
   async init() {
+    const category = capitalize(this.category);
+    document.querySelector("title").innerText = `Top products: ${category}`;
     const list = await this.dataSource.getData(this.category);
-    this.renderList(list.slice(0, 4));
+    this.renderList(list);
   }
 
   renderList(list) {

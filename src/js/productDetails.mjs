@@ -5,6 +5,7 @@ import {
   setCartCount,
   updateCartBadge,
   zoomAnimation,
+  capitalize,
 } from "./utils.mjs";
 
 function productContent(product) {
@@ -14,7 +15,7 @@ function productContent(product) {
     <h2 class="divider">${product.Name}</h2>
     <img
       class="divider"
-      src="${product.Image}"
+      src="${product.Images.PrimaryLarge}"
       alt="${product.Name}"
     />
     <p class="product-card__price">${product.ListPrice}</p>
@@ -35,6 +36,9 @@ export default class productDetails {
   }
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
+    const category = capitalize(this.product.Category);
+    document.querySelector("title").innerText =
+      `${category} - ${this.product.Name}`;
     this.renderProductDetails("main");
     document
       .getElementById("addToCart")

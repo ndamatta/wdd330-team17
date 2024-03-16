@@ -319,6 +319,20 @@ button {
   background-color: pink;
 }
 
+.product-categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 75%;
+  margin: 0 auto;
+}
+
+.product-categories > a {
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

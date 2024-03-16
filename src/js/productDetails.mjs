@@ -50,8 +50,24 @@ export default class productDetails {
     if (!Array.isArray(cartItems)) {
       cartItems = [];
     }
+
+    let onCart = cartItems.find(obj => obj.Id === this.product.Id)
+    if (onCart) {
+      cartItems = cartItems.map(item => {
+        if (this.product.Id === item.Id) {
+          item["qty"] += 1
+          return item
+        }
+        return item
+      })
+
+    } else {
+      this.product["qty"] = 1
+      cartItems.push(this.product);
+    }
+
+
     // add new item to cart
-    cartItems.push(this.product);
     setLocalStorage("so-cart", cartItems);
     setCartCount(cartItems.length);
     zoomAnimation();

@@ -96,3 +96,14 @@ export function zoomAnimation() {
 export function capitalize(text) {
   return text[0].toUpperCase() + text.slice(1);
 }
+
+export function stringToDotNotation(object, textAttributes) {
+  const attributes = textAttributes.split(".")
+  let objs = object
+  for (let attr of attributes) {
+    if (attr != "") {
+      objs = objs[attr]
+    }
+  }
+  return objs
+}

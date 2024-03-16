@@ -98,12 +98,12 @@ export function capitalize(text) {
 }
 
 export function stringToDotNotation(object, textAttributes) {
-  const attributes = textAttributes.split(".")
-  let objs = object
+  const attributes = textAttributes.split(".");
+  let objs = object;
   for (let attr of attributes) {
     if (attr != "") {
-      objs = objs[attr]
+      objs = objs[attr];
     }
   }
-  return objs
+  return objs;
 }

@@ -1,12 +1,15 @@
 import SearchProducts from "./searchProducts.mjs";
 import { getParams, loadHeaderFooter } from "./utils.mjs";
 
-loadHeaderFooter()
+loadHeaderFooter();
 
-const searchAttrubute = getParams("searchAttribute")
-const searchText = getParams("searchText")
-const listConatiner = document.querySelector(".product-list")
+const searchAttrubute = getParams("searchAttribute");
+const searchText = getParams("searchText");
+const listConatiner = document.querySelector(".product-list");
 
-const searchResult = new SearchProducts(listConatiner, searchAttrubute, searchText)
-searchResult.init()
-
+const searchResult = new SearchProducts(
+  listConatiner,
+  searchAttrubute,
+  searchText,
+);
+searchResult.init();

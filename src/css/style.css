@@ -343,7 +343,6 @@ button {
   display: flex;
   flex-direction: col;
   align-items: center;
-
 }
 
 .search_button {

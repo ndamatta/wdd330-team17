@@ -71,10 +71,13 @@ export const loadHeaderFooter = async () => {
 
 export function updateCartBadge() {
   const cartItems = JSON.parse(localStorage.getItem("so-cart"));
-  const cartCount = cartItems.reduce(
-    (acumulator, item) => acumulator + item.qty,
-    0,
-  );
+  let cartCount = 0
+  if (cartItems) {
+    cartCount = cartItems.reduce(
+      (acumulator, item) => acumulator + item.qty,
+      0,
+    );
+  }
   document.querySelector(".cart-count").innerHTML = cartCount;
 }
 export function zoomAnimation() {

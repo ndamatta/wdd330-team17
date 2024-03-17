@@ -320,6 +320,57 @@ button {
   background-color: pink;
 }
 
+.product-categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 75%;
+  margin: 0 auto;
+}
+
+.product-categories > a {
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: col;
+  align-items: center;
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: col;
+  align-items: center;
+}
+
+.search_button {
+  border-radius: 0 50px 50px 0;
+  padding: 0.5em 1em;
+  font-size: 0.75em;
+  margin: 0;
+  display: inline;
+  background-color: lightGray;
+}
+
+.searchText {
+  margin: 0;
+  margin-left: 0;
+  padding: 0.4em 1em;
+  border-style: solid;
+  border-color: lightGray;
+  box-sizing: border-box;
+}
+
+.searchAttribute {
+  margin: 0;
+  padding: 0.4em 1em;
+  border-color: lightGray transparent lightGray transparent;
+  border-radius: 10px 0 0 10px;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

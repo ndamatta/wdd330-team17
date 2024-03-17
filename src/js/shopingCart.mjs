@@ -9,7 +9,7 @@ function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Images.PrimarySmall}"
+      src="${item.Images.PrimaryMedium}"
       alt="${item.Name}"
     />
   </a>
@@ -34,8 +34,8 @@ export default class ShopingCart {
 
   async init() {
     this.getData();
-    this.getTotalsInCart();
     this.renderCartList(this.cartItems);
+    this.getTotalsInCart();
     this.renderTotalsInCart();
     this.attachRemoveItemListeners();
   }
@@ -46,6 +46,7 @@ export default class ShopingCart {
   }
 
   getTotalsInCart() {
+    console.log("obteniendo datos para realizar la suma: ", this.cartItems)
     this.totalPrice = this.cartItems.reduce(
       (acumulator, iterator) => acumulator + iterator.FinalPrice,
       0,
@@ -62,11 +63,8 @@ export default class ShopingCart {
   }
 
   renderTotalsInCart() {
-    if (this.totalPrice!==0){
-      const totalPriceHtml = `Total: $${this.totalPrice}`;
-      document.querySelector(".cart-total").innerHTML = totalPriceHtml;
-    }
-    
+    const totalPriceHtml = `Total: $${this.totalPrice}`;
+    document.querySelector(".cart-total").innerHTML = totalPriceHtml;
   }
 
   attachRemoveItemListeners() {

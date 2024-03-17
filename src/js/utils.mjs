@@ -92,3 +92,9 @@ export function zoomAnimation() {
     icon.style.transform = "scale(1)";
   }, 200);
 }
+
+export function removeItemFromCart(productId) {
+  let cartItems = getLocalStorage("so-cart") || [];
+  cartItems = cartItems.filter((item) => item.Id !== productId);
+  setLocalStorage("so-cart", cartItems); // Re-render the cart contents after removing the item
+}

@@ -149,6 +149,7 @@ button {
 }
 /* Styles for product lists */
 .product-card {
+  position: relative;
   flex: 1 1 45%;
   margin: 0.25em;
   padding: 0.5em;
@@ -341,4 +342,14 @@ footer {
 /* task by cora total-in-cart */
 .hide {
   display: none;
+}
+
+.remove-item {
+  cursor: pointer; /* Change cursor to pointer when hovering over the "X" */
+  color: #999; /* Default color */
+  font-size: 18px; /* Adjust font size */
+}
+
+.remove-item:hover {
+  color: #ff0000; /* Change color when hovering over the "X" */
 }

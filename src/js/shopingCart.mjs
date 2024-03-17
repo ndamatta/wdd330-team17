@@ -1,4 +1,8 @@
-import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
+import {
+  getLocalStorage,
+  renderListWithTemplate,
+  removeItemFromCart,
+} from "./utils.mjs";
 
 function cartItemTemplate(item) {
   // console.log(item)
@@ -15,6 +19,7 @@ function cartItemTemplate(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
+  <span class="remove-item" data-id="${item.Id}">X</span>
 </li>`;
 
   return newItem;
@@ -32,6 +37,7 @@ export default class ShopingCart {
     this.getTotalsInCart();
     this.renderCartList(this.cartItems);
     this.renderTotalsInCart();
+    this.attachRemoveItemListeners();
   }
 
   getData() {
@@ -47,6 +53,7 @@ export default class ShopingCart {
   }
 
   renderCartList() {
+    this.parentElement.innerHTML = "";
     renderListWithTemplate(
       cartItemTemplate,
       this.parentElement,
@@ -60,5 +67,16 @@ export default class ShopingCart {
       document.querySelector(".cart-total").innerHTML = totalPriceHtml;
     }
     
+  }
+
+  attachRemoveItemListeners() {
+    const removeButtons = document.querySelectorAll(".remove-item");
+    removeButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const productId = event.target.dataset.id;
+        removeItemFromCart(productId);
+        this.init();
+      });
+    });
   }
 }

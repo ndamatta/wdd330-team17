@@ -5,10 +5,11 @@ import {
 } from "./utils.mjs";
 
 function cartItemTemplate(item) {
+  // console.log(item)
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimarySmall}"
       alt="${item.Name}"
     />
   </a>
@@ -61,8 +62,11 @@ export default class ShopingCart {
   }
 
   renderTotalsInCart() {
-    const totalPriceHtml = `Total: $${this.totalPrice}`;
-    document.querySelector(".cart-total").innerHTML = totalPriceHtml;
+    if (this.totalPrice!==0){
+      const totalPriceHtml = `Total: $${this.totalPrice}`;
+      document.querySelector(".cart-total").innerHTML = totalPriceHtml;
+    }
+    
   }
 
   attachRemoveItemListeners() {

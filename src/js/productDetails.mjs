@@ -51,21 +51,8 @@ export default class productDetails {
       cartItems = [];
     }
 
-    let onCart = cartItems.find(obj => obj.Id === this.product.Id)
-    if (onCart) {
-      cartItems = cartItems.map(item => {
-        if (this.product.Id === item.Id) {
-          item["qty"] += 1
-          return item
-        }
-        return item
-      })
-
-    } else {
-      this.product["qty"] = 1
-      cartItems.push(this.product);
-    }
-
+    let itemIndex = cartItems.findIndex(obj => obj.Id === this.product.Id)
+    itemIndex !== -1 ? cartItems[itemIndex].qty += 1 : cartItems.push({ ...this.product, qty: 1 })
 
     // add new item to cart
     setLocalStorage("so-cart", cartItems);

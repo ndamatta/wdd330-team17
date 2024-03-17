@@ -5,7 +5,6 @@ import {
 } from "./utils.mjs";
 
 function cartItemTemplate(item) {
-  // console.log(item)
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
@@ -17,7 +16,7 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__quantity">qty: ${item.qty}</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
   <span class="remove-item" data-id="${item.Id}">X</span>
 </li>`;
@@ -46,9 +45,8 @@ export default class ShopingCart {
   }
 
   getTotalsInCart() {
-    console.log("obteniendo datos para realizar la suma: ", this.cartItems)
     this.totalPrice = this.cartItems.reduce(
-      (acumulator, iterator) => acumulator + iterator.FinalPrice,
+      (acumulator, iterator) => acumulator + iterator.FinalPrice * iterator.qty,
       0,
     );
   }
@@ -63,7 +61,7 @@ export default class ShopingCart {
   }
 
   renderTotalsInCart() {
-    const totalPriceHtml = `Total: $${this.totalPrice}`;
+    const totalPriceHtml = `Total: $${Math.round(this.totalPrice * 100) / 100}`;
     document.querySelector(".cart-total").innerHTML = totalPriceHtml;
   }
 

@@ -9,6 +9,7 @@ import {
 } from "./utils.mjs";
 
 function productContent(product) {
+  // console.log(product)
   return `
     <section class="product-detail">
     <h3>${product.Brand.Name}</h3>

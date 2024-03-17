@@ -93,6 +93,12 @@ export function zoomAnimation() {
   }, 200);
 }
 
+export function removeItemFromCart(productId) {
+  let cartItems = getLocalStorage("so-cart") || [];
+  cartItems = cartItems.filter((item) => item.Id !== productId);
+  setLocalStorage("so-cart", cartItems); // Re-render the cart contents after removing the item
+}
+
 export function capitalize(text) {
   return text[0].toUpperCase() + text.slice(1);
 }

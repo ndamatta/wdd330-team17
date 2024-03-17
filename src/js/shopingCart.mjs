@@ -1,6 +1,11 @@
-import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
+import {
+  getLocalStorage,
+  renderListWithTemplate,
+  removeItemFromCart,
+} from "./utils.mjs";
 
 function cartItemTemplate(item) {
+  // console.log(item)
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
@@ -14,6 +19,7 @@ function cartItemTemplate(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: ${item.qty}</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
+  <span class="remove-item" data-id="${item.Id}">X</span>
 </li>`;
 
   return newItem;
@@ -28,9 +34,10 @@ export default class ShopingCart {
 
   async init() {
     this.getData();
-    this.getTotalsInCart();
     this.renderCartList(this.cartItems);
+    this.getTotalsInCart();
     this.renderTotalsInCart();
+    this.attachRemoveItemListeners();
   }
 
   getData() {
@@ -39,6 +46,7 @@ export default class ShopingCart {
   }
 
   getTotalsInCart() {
+    console.log("obteniendo datos para realizar la suma: ", this.cartItems)
     this.totalPrice = this.cartItems.reduce(
       (acumulator, iterator) => acumulator + iterator.FinalPrice * iterator.qty,
       0,
@@ -46,6 +54,7 @@ export default class ShopingCart {
   }
 
   renderCartList() {
+    this.parentElement.innerHTML = "";
     renderListWithTemplate(
       cartItemTemplate,
       this.parentElement,
@@ -56,5 +65,16 @@ export default class ShopingCart {
   renderTotalsInCart() {
     const totalPriceHtml = `Total: $${this.totalPrice}`;
     document.querySelector(".cart-total").innerHTML = totalPriceHtml;
+  }
+
+  attachRemoveItemListeners() {
+    const removeButtons = document.querySelectorAll(".remove-item");
+    removeButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const productId = event.target.dataset.id;
+        removeItemFromCart(productId);
+        this.init();
+      });
+    });
   }
 }

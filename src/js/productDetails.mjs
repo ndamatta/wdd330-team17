@@ -7,10 +7,9 @@ import {
 } from "./utils.mjs";
 import Alert from "./alert.mjs";
 
-const alert = new Alert()
+const alert = new Alert();
 
 function productContent(product) {
-  // console.log(product)
   return `
     <section class="product-detail">
     <h3>${product.Brand.Name}</h3>
@@ -53,15 +52,21 @@ export default class productDetails {
       cartItems = [];
     }
 
-    let itemIndex = cartItems.findIndex(obj => obj.Id === this.product.Id)
-    itemIndex !== -1 ? cartItems[itemIndex].qty += 1 : cartItems.push({ ...this.product, qty: 1 })
+    let itemIndex = cartItems.findIndex((obj) => obj.Id === this.product.Id);
+    itemIndex !== -1
+      ? (cartItems[itemIndex].qty += 1)
+      : cartItems.push({ ...this.product, qty: 1 });
 
     // add new item to cart
     setLocalStorage("so-cart", cartItems);
     zoomAnimation();
     updateCartBadge();
-    alert.init()
-    alert.renderAlert("Product added!", `${this.product.Name} added to the cart succesfully!`, "success")
+    alert.init();
+    alert.renderAlert(
+      "Product added!",
+      `${this.product.Name} added to the cart succesfully!`,
+      "success",
+    );
   }
   renderProductDetails(element) {
     let container = document.querySelector(element);

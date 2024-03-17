@@ -7,7 +7,7 @@ export function qs(selector, parent = document) {
 // or a more concise version if you are into that sort of thing:
 // export const qs = (selector, parent = document) => parent.querySelector(selector);
 
-const alert = new Alert()
+const alert = new Alert();
 
 // retrieve data from localstorage
 export function getLocalStorage(key) {
@@ -66,14 +66,16 @@ export const loadHeaderFooter = async () => {
   let parentFooter = document.querySelector("footer");
   renderWithTemplate(header, parentHeader);
   renderWithTemplate(footer, parentFooter);
-  updateCartBadge()
+  updateCartBadge();
 };
 
 export function updateCartBadge() {
-  const cartItems = JSON.parse(localStorage.getItem("so-cart"))
-  const cartCount = cartItems.reduce((acumulator, item) => acumulator + item.qty, 0)
-  document.querySelector(".cart-count").innerHTML = cartCount
-
+  const cartItems = JSON.parse(localStorage.getItem("so-cart"));
+  const cartCount = cartItems.reduce(
+    (acumulator, item) => acumulator + item.qty,
+    0,
+  );
+  document.querySelector(".cart-count").innerHTML = cartCount;
 }
 export function zoomAnimation() {
   const icon = document.querySelector("#cartIconSvg");
@@ -85,12 +87,16 @@ export function zoomAnimation() {
 
 export function removeItemFromCart(productId) {
   let cartItems = getLocalStorage("so-cart") || [];
-  let item = cartItems.find(item => item.Id === productId)
-  cartItems = cartItems.filter((item) => item.Id !== productId);
+  let item = cartItems.find((product) => product.Id === productId);
+  cartItems = cartItems.filter((product) => product.Id !== productId);
   setLocalStorage("so-cart", cartItems); // Re-render the cart contents after removing the item
-  updateCartBadge()
-  alert.init()
-  alert.renderAlert("Removed", `Removed ${item.qty} ${item.Name} from the cart.`, "danger")
+  updateCartBadge();
+  alert.init();
+  alert.renderAlert(
+    "Removed",
+    `Removed ${item.qty} ${item.Name} from the cart.`,
+    "danger",
+  );
 }
 
 export function capitalize(text) {

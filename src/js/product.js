@@ -1,9 +1,8 @@
-import { getParams, loadHeaderFooter } from "./utils.mjs";
+import { getParams, loadHeaderFooter, updateCartBadge } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import productDetails from "./productDetails.mjs";
 
 loadHeaderFooter();
-
 const productId = getParams("product");
 const dataSource = new ProductData("tents");
 

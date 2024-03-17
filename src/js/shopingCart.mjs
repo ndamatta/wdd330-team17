@@ -46,7 +46,6 @@ export default class ShopingCart {
   }
 
   getTotalsInCart() {
-    console.log("obteniendo datos para realizar la suma: ", this.cartItems)
     this.totalPrice = this.cartItems.reduce(
       (acumulator, iterator) => acumulator + iterator.FinalPrice * iterator.qty,
       0,
@@ -63,7 +62,7 @@ export default class ShopingCart {
   }
 
   renderTotalsInCart() {
-    const totalPriceHtml = `Total: $${this.totalPrice}`;
+    const totalPriceHtml = `Total: $${Math.round(this.totalPrice * 100) / 100}`;
     document.querySelector(".cart-total").innerHTML = totalPriceHtml;
   }
 

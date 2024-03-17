@@ -1,12 +1,13 @@
 import {
   getLocalStorage,
   setLocalStorage,
-  getCartCount,
-  setCartCount,
   updateCartBadge,
   zoomAnimation,
   capitalize,
 } from "./utils.mjs";
+import Alert from "./alert.mjs";
+
+const alert = new Alert()
 
 function productContent(product) {
   // console.log(product)
@@ -44,7 +45,7 @@ export default class productDetails {
     document
       .getElementById("addToCart")
       .addEventListener("click", this.addToCart.bind(this));
-    updateCartBadge(getCartCount());
+    updateCartBadge();
   }
   addToCart() {
     let cartItems = getLocalStorage("so-cart");
@@ -57,9 +58,10 @@ export default class productDetails {
 
     // add new item to cart
     setLocalStorage("so-cart", cartItems);
-    setCartCount(cartItems.length);
     zoomAnimation();
-    updateCartBadge(getCartCount());
+    updateCartBadge();
+    alert.init()
+    alert.renderAlert("Product added!", `${this.product.Name} added to the cart succesfully!`, "success")
   }
   renderProductDetails(element) {
     let container = document.querySelector(element);

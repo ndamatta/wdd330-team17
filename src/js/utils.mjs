@@ -1,9 +1,13 @@
+import Alert from "./alert.mjs";
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
 }
 // or a more concise version if you are into that sort of thing:
 // export const qs = (selector, parent = document) => parent.querySelector(selector);
+
+const alert = new Alert()
 
 // retrieve data from localstorage
 export function getLocalStorage(key) {
@@ -62,28 +66,14 @@ export const loadHeaderFooter = async () => {
   let parentFooter = document.querySelector("footer");
   renderWithTemplate(header, parentHeader);
   renderWithTemplate(footer, parentFooter);
-  updateCartBadge(getCartCount());
+  updateCartBadge()
 };
 
-export function setCartCount(count) {
-  localStorage.setItem("cartCount", count);
-}
+export function updateCartBadge() {
+  const cartItems = JSON.parse(localStorage.getItem("so-cart"))
+  const cartCount = cartItems.reduce((acumulator, item) => acumulator + item.qty, 0)
+  document.querySelector(".cart-count").innerHTML = cartCount
 
-export function getCartCount() {
-  return parseInt(localStorage.getItem("cartCount")) || 0;
-}
-
-export function updateCartBadge(data) {
-  const cartCountElement = document.querySelector(".cart-count");
-
-  if (cartCountElement) {
-    if (data !== undefined) {
-      cartCountElement.innerText = data.toString();
-    } else {
-      const cartCount = getCartCount();
-      cartCountElement.innerText = cartCount.toString();
-    }
-  }
 }
 export function zoomAnimation() {
   const icon = document.querySelector("#cartIconSvg");
@@ -95,8 +85,12 @@ export function zoomAnimation() {
 
 export function removeItemFromCart(productId) {
   let cartItems = getLocalStorage("so-cart") || [];
+  let item = cartItems.find(item => item.Id === productId)
   cartItems = cartItems.filter((item) => item.Id !== productId);
   setLocalStorage("so-cart", cartItems); // Re-render the cart contents after removing the item
+  updateCartBadge()
+  alert.init()
+  alert.renderAlert("Removed", `Removed ${item.qty} ${item.Name} from the cart.`, "danger")
 }
 
 export function capitalize(text) {

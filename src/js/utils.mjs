@@ -71,7 +71,7 @@ export const loadHeaderFooter = async () => {
 
 export function updateCartBadge() {
   const cartItems = JSON.parse(localStorage.getItem("so-cart"));
-  let cartCount = 0
+  let cartCount = 0;
   if (cartItems) {
     cartCount = cartItems.reduce(
       (acumulator, item) => acumulator + item.qty,

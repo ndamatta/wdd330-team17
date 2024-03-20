@@ -116,3 +116,10 @@ export function stringToDotNotation(object, textAttributes) {
   }
   return objs;
 }
+
+export function formDataToJSON(formElement) {
+  const formData = new FormData(formElement)
+  let jsonResult = {}
+  formData.forEach((value, key) => jsonResult[key] = value)
+  return jsonResult
+}

@@ -11,7 +11,7 @@ function convertToJson(res) {
   }
 }
 
-export default class ProductData {
+export default class ExternalServices {
   constructor() {
     // this.category = category;
     // this.path = `../json/${this.category}.json`;
@@ -33,6 +33,17 @@ export default class ProductData {
         "An error has occurred, plese refresh and try again!",
         "danger",
       );
+    }
+  }
+
+  async checkout(options) {
+    const response = await fetch(`${baseURL}checkout`, options)
+    if (response.ok) {
+      const data = await convertToJson(response)
+      return data
+    } else {
+      const data = await response.json()
+      throw data
     }
   }
 }

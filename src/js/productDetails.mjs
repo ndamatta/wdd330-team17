@@ -57,17 +57,18 @@ export default class productDetails {
       ? (cartItems[itemIndex].qty += 1)
       : cartItems.push({ ...this.product, qty: 1 });
 
-    // add new item to cart
-    setLocalStorage("so-cart", cartItems);
-    zoomAnimation();
-    updateCartBadge();
-    alert.init();
-    alert.renderAlert(
-      "Product added!",
-      `${this.product.Name} added to the cart succesfully!`,
-      "success",
-    );
-  }
+     // Add new item to cart
+     setLocalStorage("so-cart", cartItems);
+     zoomAnimation();
+     updateCartBadge();
+     
+     // Display alert message
+     alert.renderAlert(
+       "Product added!",
+       `${this.product.Name} added to the cart successfully!`,
+       "success"
+     );
+   }
   renderProductDetails(element) {
     let container = document.querySelector(element);
     let productForm = productContent(this.product);

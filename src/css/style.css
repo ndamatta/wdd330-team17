@@ -423,3 +423,90 @@ footer {
 .remove-item:hover {
   color: #ff0000; /* Change color when hovering over the "X" */
 }
+
+.fieldset-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 2em;
+  gap: 1.5em;
+}
+
+.fieldset-container label {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.creditCardNumber {
+  width: 100% !important;
+}
+
+.orderSumary p,
+h3 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.alert-message {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 90%;
+  max-width: 400px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: top 0.3s ease-in-out;
+}
+
+.alert-message.visible {
+  top: 20px;
+}
+
+.alert-message.success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+.alert-message.error {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+/* Button */
+#signupButton {
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue color, change as needed */
+  color: #fff; /* White text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#signupButton:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
+
+/* Link */
+#signupLink {
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue color, change as needed */
+  color: #fff; /* White text color */
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+#signupLink:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
+
+

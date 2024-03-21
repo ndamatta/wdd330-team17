@@ -1,26 +1,63 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sleep Outside | Checkout</title>
-
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/style.css">
     <script type="module" src="../js/checkout.js"></script>
-  </head>
-
-  <body>
+</head>
+<body>
     <header class="divider"></header>
-
     <main class="divider">
-      <section class="products">
-        <h2>Review & Place your Order</h2>
-      </section>
+        <section class="products">
+            <h2>Review & Place your Order</h2>
+            <form action="" class="checkout" id="checkoutForm">
+                <fieldset class="fieldset-container">
+                    <legend>Personal information</legend>
+                    <label for="fname">First Name
+                        <input required type="text" name="fname" id="fname">
+                    </label>
+                    <label for="lname">Last Name
+                        <input required type="text" name="lname" id="lname">
+                    </label>
+                </fieldset>
+                <fieldset class="fieldset-container">
+                    <legend>Address</legend>
+                    <label for="street">Street
+                        <input required type="text" name="street" id="street">
+                    </label>
+                    <label for="city">City
+                        <input required type="text" name="city" id="city">
+                    </label>
+                    <label for="state">State
+                        <input required type="text" name="state" id="state">
+                    </label>
+                    <label for="zip">Zip code
+                        <input required type="text" name="zip" id="zip">
+                    </label>
+                </fieldset>
+                <fieldset class="fieldset-container">
+                    <legend>Payment information</legend>
+                    <label for="cardNumber" class="creditCardNumber">Credit card number
+                        <input required type="text" name="cardNumber" id="cardNumber">
+                    </label>
+                    <label for="expiration">Expiration date
+                        <input required type="text" name="expiration" id="expiration">
+                    </label>
+                    <label for="code">Security code
+                        <input required type="text" name="code" id="code" maxlength="3">
+                    </label>
+                </fieldset>
+                <fieldset class="orderSumary">
+                    <legend>Order summary</legend>
+                    <div class="orderSumaryContent"></div>
+                </fieldset>
+                <button type="submit" class="checkoutButton">Place order</button>
+            </form>
+            <br>
+        </section>
     </main>
-
     <footer></footer>
-  </body>
+</body>
 </html>

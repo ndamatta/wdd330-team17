@@ -1,4 +1,4 @@
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import { renderListWithTemplate, stringToDotNotation } from "./utils.mjs";
 function productCartTemplate(product) {
   return `
@@ -30,7 +30,7 @@ export default class SearchProducts {
     list.length > 0
       ? this.renderList(list)
       : (this.listElement.innerHTML =
-          "<h2>No data found with the search criteria</h2>");
+        "<h2>No data found with the search criteria</h2>");
   }
 
   listSearchResults(dataSource) {
@@ -42,7 +42,7 @@ export default class SearchProducts {
   }
 
   async getAllProducts() {
-    const products = new ProductData();
+    const products = new ExternalServices();
     const tents = await products.getData("tents");
     const backpacks = await products.getData("backpacks");
     const sleepingBags = await products.getData("sleeping-bags");

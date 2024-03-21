@@ -1,26 +1,31 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Sleep Outside | Checkout</title>
-
-    <link rel="stylesheet" href="../css/style.css" />
-    <script type="module" src="../js/checkout.js"></script>
-  </head>
-
-  <body>
-    <header class="divider"></header>
-
-    <main class="divider">
-      <section class="products">
-        <h2>Review & Place your Order</h2>
-      </section>
-    </main>
-
-    <footer></footer>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sleep Outside | Checkout</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script type="module" src="../js/checkout.js"></script>
+</head>
+<body>
+  <header class="divider"></header>
+  <main class="divider">
+    <section class="products">
+      <h2>Review & Place your Order</h2>
+      <form name="checkout">
+        
+        <input type="text" name="firstName" placeholder="First Name" required>
+        <input type="text" name="lastName" placeholder="Last Name" required>
+        
+        
+        
+        <button id="checkoutSubmit">Submit</button>
+      </form>
+      <div id="output">
+       
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+</body>
 </html>

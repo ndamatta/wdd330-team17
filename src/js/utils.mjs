@@ -116,3 +116,18 @@ export function stringToDotNotation(object, textAttributes) {
   }
   return objs;
 }
+
+export function alertMessage(message, scroll = true) {
+  const alertDiv = document.createElement("div");
+  alertDiv.classList.add("alert");
+  alertDiv.textContent = message;
+
+ 
+  const mainElement = document.querySelector("main");
+  mainElement.insertBefore(alertDiv, mainElement.firstChild);
+
+  
+  if (scroll) {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}

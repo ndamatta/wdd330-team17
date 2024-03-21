@@ -390,7 +390,6 @@ footer {
   padding: 1em;
 }
 
-/* task by cora total-in-cart */
 .hide {
   display: none;
 }
@@ -422,4 +421,12 @@ footer {
 
 .remove-item:hover {
   color: #ff0000; /* Change color when hovering over the "X" */
+}
+
+.sorting-container {
+  margin: 1rem;
+}
+.sorting-container > input[type="radio"]:checked {
+  color: red;
+  background-color: red;
 }

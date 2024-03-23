@@ -11,30 +11,29 @@ import Carousel from "./carousel.mjs";
 const alert = new Alert();
 
 function productContent(product) {
-  let pictureElementString = ""
-  if( product.Images.ExtraImages ){
-    const extraImagesList = product.Images.ExtraImages
-    let carouselImgList = extraImagesList.map((item, index)=>{
-      return `
-      <div class="mySlides fade">
-        <div class="numbertext">${(index+2).toString()} / ${(extraImagesList.length+1).toString()}</div>
+  let pictureElementString = "";
+  if (product.Images.ExtraImages) {
+    const extraImagesList = product.Images.ExtraImages;
+    let carouselImgList = extraImagesList.map(
+      (item, index) => `<div class="mySlides fade">
+        <div class="numbertext">${(index + 2).toString()} / ${(extraImagesList.length + 1).toString()}</div>
         <img src="${item.Src}" style="width:100%"/>
       </div>
-      `
-    })
+      `,
+    );
     carouselImgList.unshift(`
       <div class="mySlides fade">
-        <div class="numbertext">1 / ${(extraImagesList.length+1).toString()}</div>
+        <div class="numbertext">1 / ${(extraImagesList.length + 1).toString()}</div>
         <img src="${product.Images.PrimaryLarge}" style="width:100%"/>
       </div>
-    `)
-    let carouselDotList = carouselImgList.map((item, index)=>{
-      return `
-        <span class="dot dot${(index+1).toString()}"></span>
-      `
-    })
-    let carouselImgItem = carouselImgList.join("")
-    let carouselDotItem = carouselDotList.join("")
+    `);
+    let carouselDotList = carouselImgList.map(
+      (item, index) => `
+        <span class="dot dot${(index + 1).toString()}"></span>
+      `,
+    );
+    let carouselImgItem = carouselImgList.join("");
+    let carouselDotItem = carouselDotList.join("");
     let carouselElement = `
       <div class="slideshow-container">
         ${carouselImgItem}
@@ -45,14 +44,14 @@ function productContent(product) {
       <div style="text-align:center">
         ${carouselDotItem}
       </div>
-    `
-    pictureElementString = carouselElement
+    `;
+    pictureElementString = carouselElement;
   } else {
     pictureElementString = `<img
       class="divider"
       src="${product.Images.PrimaryLarge}"
       alt="${product.Name}"
-    />`
+    />`;
   }
   return `
     <section class="product-detail">
@@ -81,7 +80,7 @@ export default class productDetails {
     document.querySelector("title").innerText =
       `${category} - ${this.product.Name}`;
     this.renderProductDetails("main");
-    if( this.product.Images.ExtraImages ){
+    if (this.product.Images.ExtraImages) {
       const carousel = new Carousel();
       carousel.init();
     }

@@ -18,19 +18,23 @@ const externalServices = new ExternalServices();
 
 const submitButton = document.querySelector(".checkoutButton");
 
-formData.addEventListener("change", (e) => console.log(e.target.checkValidity()));
-
 submitButton.addEventListener("click", async (e) => {
   e.preventDefault();
 
   try {
     // Perform checkout process
-    const response = await externalServices.checkout(checkout.generatePayload());
+    const response = await externalServices.checkout(
+      checkout.generatePayload(),
+    );
 
     // Show success message and redirect to success page
-    alert.renderAlert(response.message, `The order has been placed successfully, the order number is ${response.orderId}, you will receive a confirmation email shortly.`, "success");
+    alert.renderAlert(
+      response.message,
+      `The order has been placed successfully, the order number is ${response.orderId}, you will receive a confirmation email shortly.`,
+      "success",
+    );
     checkout.resetData();
-    
+
     // Redirect to success page
     window.location.href = "success.html";
   } catch (error) {
@@ -38,7 +42,7 @@ submitButton.addEventListener("click", async (e) => {
     const errors = `${Object.values(error).join("\n")}`;
     alert.renderAlert("Error", `${errors}`, "danger");
   }
-  
+
   // Clear form data
   formData.reset();
 });

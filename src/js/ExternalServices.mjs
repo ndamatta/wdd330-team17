@@ -9,7 +9,7 @@ async function convertToJson(res) {
   if (res.ok) {
     return jsonResponse;
   } else {
-    throw { name: 'servicesError', message: jsonResponse };
+    throw { name: "servicesError", message: jsonResponse };
   }
 }
 
@@ -39,13 +39,31 @@ export default class ExternalServices {
   }
 
   async checkout(options) {
-    const response = await fetch(`${baseURL}checkout`, options)
+    const response = await fetch(`${baseURL}checkout`, options);
     if (response.ok) {
-      const data = await convertToJson(response)
-      return data
+      const data = await convertToJson(response);
+      return data;
     } else {
-      const data = await response.json()
-      throw data
+      const data = await response.json();
+      throw data;
+    }
+  }
+
+  async login(payload) {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    };
+    const response = await fetch(`${baseURL}login`, options);
+    if (response.ok) {
+      const data = convertToJson(response);
+      return data;
+    } else {
+      const data = await response.json();
+      throw data;
     }
   }
 }

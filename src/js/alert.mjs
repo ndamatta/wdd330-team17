@@ -23,11 +23,11 @@ const singleAlertTemplate = (alertData) => {
   button.classList.add("alert-action__close");
   button.innerText = "x";
   button.addEventListener("click", () => {
-      alertContainer.classList.toggle("visible");
-      alertContainer.classList.add("delete");
-      alertContainer.addEventListener("animationend", () => {
-          alertContainer.remove();
-      });
+    alertContainer.classList.toggle("visible");
+    alertContainer.classList.add("delete");
+    alertContainer.addEventListener("animationend", () => {
+      alertContainer.remove();
+    });
   });
   alertActions.append(button);
 
@@ -39,77 +39,77 @@ const singleAlertTemplate = (alertData) => {
 // Alert class
 export default class Alert {
   constructor() {
-      this.parentElement = null;
+    this.parentElement = null;
   }
 
   // For now we only need to check if the alert-list container exists, if not we create it
   init() {
-      this.setParentAlertElement();
+    this.setParentAlertElement();
   }
 
   // This function will close the alert in 10 seconds if we set autoClose to true
   removeAlertHandler(alertContainer) {
-      alertContainer.addEventListener("animationend", (e) => {
-          if (e.target.classList.contains("visible")) {
-              setTimeout(() => {
-                  e.target.classList.toggle("visible");
-                  e.target.classList.add("delete");
-              }, 10000);
-          } else if (e.target.classList.contains("delete")) {
-              e.target.remove();
-          }
-      });
-      return alertContainer;
+    alertContainer.addEventListener("animationend", (e) => {
+      if (e.target.classList.contains("visible")) {
+        setTimeout(() => {
+          e.target.classList.toggle("visible");
+          e.target.classList.add("delete");
+        }, 10000);
+      } else if (e.target.classList.contains("delete")) {
+        e.target.remove();
+      }
+    });
+    return alertContainer;
   }
 
   // Check if the parent element exists, if not, creates it and appends to the body
   setParentAlertElement() {
-      const alertListParentElement = document.querySelector(".alert-list");
-      if (!alertListParentElement) {
-          let parent = document.createElement("section");
-          parent.classList.add("alert-list");
-          this.parentElement = parent;
-          document.querySelector("body").prepend(parent);
-      } else {
-          this.parentElement = alertListParentElement;
-      }
+    const alertListParentElement = document.querySelector(".alert-list");
+    if (!alertListParentElement) {
+      let parent = document.createElement("section");
+      parent.classList.add("alert-list");
+      this.parentElement = parent;
+      document.querySelector("body").prepend(parent);
+    } else {
+      this.parentElement = alertListParentElement;
+    }
   }
 
   // This will create a new alert of any type
   renderAlert(title = "", text = "", type = "primary") {
-      let alert = singleAlertTemplate({ title: title, body: text, type: type });
-      let alertWithAutoClose = this.removeAlertHandler(alert);
-      this.parentElement.append(alertWithAutoClose);
+    let alert = singleAlertTemplate({ title: title, body: text, type: type });
+    let alertWithAutoClose = this.removeAlertHandler(alert);
+    this.parentElement.append(alertWithAutoClose);
   }
 
   // Renders multiple alerts
   renderAlerts(alertList) {
-      let alerts = alertList.map((alertData) =>
-          singleAlertTemplate(alertData, this.autoClose)
-      );
-      alerts.map((alert) => {
-          let alertWithAutoClose = this.removeAlertHandler(alert);
-          this.parentElement.appendChild(alertWithAutoClose);
-      });
+    let alerts = alertList.map((alertData) =>
+      singleAlertTemplate(alertData, this.autoClose),
+    );
+    alerts.map((alert) => {
+      let alertWithAutoClose = this.removeAlertHandler(alert);
+      this.parentElement.appendChild(alertWithAutoClose);
+    });
   }
 }
 
 // Custom alert message function
 export function alertMessage(message, scroll = true) {
-  const alertContainer = document.createElement('div');
-  alertContainer.classList.add('alert', 'visible', 'error'); // Assuming default type is error
+  const alertContainer = document.createElement("div");
+  alertContainer.classList.add("alert", "visible", "error"); // Assuming default type is error
   alertContainer.textContent = message;
 
-  const closeButton = document.createElement('button');
-  closeButton.classList.add('alert-action__close');
-  closeButton.textContent = '✕';
-  closeButton.addEventListener('click', () => alertContainer.remove());
+  const closeButton = document.createElement("button");
+  closeButton.classList.add("alert-action__close");
+  closeButton.textContent = "✕";
+  closeButton.addEventListener("click", () => alertContainer.remove());
 
   alertContainer.appendChild(closeButton);
 
   document.body.insertBefore(alertContainer, document.body.firstChild);
 
   if (scroll) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }

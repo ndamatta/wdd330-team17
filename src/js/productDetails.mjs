@@ -45,6 +45,7 @@ export default class productDetails {
       .getElementById("addToCart")
       .addEventListener("click", this.addToCart.bind(this));
     updateCartBadge();
+    alert.init();
   }
   addToCart() {
     let cartItems = getLocalStorage("so-cart");
@@ -57,18 +58,18 @@ export default class productDetails {
       ? (cartItems[itemIndex].qty += 1)
       : cartItems.push({ ...this.product, qty: 1 });
 
-     // Add new item to cart
-     setLocalStorage("so-cart", cartItems);
-     zoomAnimation();
-     updateCartBadge();
-     
-     // Display alert message
-     alert.renderAlert(
-       "Product added!",
-       `${this.product.Name} added to the cart successfully!`,
-       "success"
-     );
-   }
+    // Add new item to cart
+    setLocalStorage("so-cart", cartItems);
+    zoomAnimation();
+    updateCartBadge();
+
+    // Display alert message
+    alert.renderAlert(
+      "Product added!",
+      `${this.product.Name} added to the cart successfully!`,
+      "success",
+    );
+  }
   renderProductDetails(element) {
     let container = document.querySelector(element);
     let productForm = productContent(this.product);

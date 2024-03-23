@@ -30,7 +30,7 @@ export default class SearchProducts {
     list.length > 0
       ? this.renderList(list)
       : (this.listElement.innerHTML =
-        "<h2>No data found with the search criteria</h2>");
+          "<h2>No data found with the search criteria</h2>");
   }
 
   listSearchResults(dataSource) {

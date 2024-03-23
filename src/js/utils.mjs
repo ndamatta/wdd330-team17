@@ -64,11 +64,12 @@ export const loadHeaderFooter = async () => {
   let parentFooter = document.querySelector("footer");
   renderWithTemplate(header, parentHeader);
   renderWithTemplate(footer, parentFooter);
+  updateCartBadge();
 };
 
 export function updateCartBadge() {
   const cartItems = JSON.parse(localStorage.getItem("so-cart"));
-  let cartCount = 0
+  let cartCount = 0;
   if (cartItems) {
     cartCount = cartItems.reduce(
       (acumulator, item) => acumulator + item.qty,
@@ -116,8 +117,8 @@ export function stringToDotNotation(object, textAttributes) {
 }
 
 export function formDataToJSON(formElement) {
-  const formData = new FormData(formElement)
-  let jsonResult = {}
-  formData.forEach((value, key) => jsonResult[key] = value)
-  return jsonResult
+  const formData = new FormData(formElement);
+  let jsonResult = {};
+  formData.forEach((value, key) => (jsonResult[key] = value));
+  return jsonResult;
 }

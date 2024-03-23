@@ -1,22 +1,35 @@
-document.getElementById('signupForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
+import { loadHeaderFooter } from "./utils.mjs";
 
-  const formData = new FormData(e.target);
+loadHeaderFooter();
+
+function formDataToJSON(formElement) {
+  const formData = new FormData(formElement);
+  let jsonResult = {};
+  formData.forEach((value, key) => (jsonResult[key] = value));
+  return jsonResult;
+}
+
+document.getElementById("signupForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const baseUrl = "http://server-nodejs.cit.byui.edu:3000/";
+  let payload = formDataToJSON(e.target);
 
   try {
-    const response = await fetch('/users', {
-      method: 'POST',
-      body: formData
+    const response = await fetch(`${baseUrl}users/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
     });
 
     if (response.ok) {
-      // Redirect to cart page
-      window.location.href = '/cart.html';
+      // Redirect to cart page upon successful signup
+      window.location.href = "/cart.html";
     } else {
-      throw new Error('Failed to create user');
+      throw new Error("Failed to create user");
     }
   } catch (error) {
-    console.error('Error creating user:', error);
-    alert('Failed to create user. Please try again.');
+    alert("Failed to create user. Please try again.");
   }
 });

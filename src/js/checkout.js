@@ -36,7 +36,7 @@ submitButton.addEventListener("click", async (e) => {
     checkout.resetData();
 
     // Redirect to success page
-    window.location.href = "success.html";
+    window.location.href = `/success.html?orderId=${response.orderId}`;
   } catch (error) {
     // Handle errors
     const errors = `${Object.values(error).join("\n")}`;

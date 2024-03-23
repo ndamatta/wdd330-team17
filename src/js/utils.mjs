@@ -65,6 +65,18 @@ export const loadHeaderFooter = async () => {
   renderWithTemplate(header, parentHeader);
   renderWithTemplate(footer, parentFooter);
   updateCartBadge();
+  document
+    .querySelector(".newsLetterFooter")
+    .addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert.init();
+      alert.renderAlert(
+        "News letters!",
+        "Thank you for registering to our news letters. Don't worry we don't like spam either!",
+        "primary",
+      );
+      e.target.reset();
+    });
 };
 
 export function updateCartBadge() {

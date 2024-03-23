@@ -566,7 +566,31 @@ h3 {
 }
 
 dialog::backdrop {
-  background-color: #00000062;
+  background-color: #000000b7;
+}
+
+dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.news_input,
+.news_actions {
+  display: flex;
+}
+
+.news_input {
+  flex-direction: column;
+}
+
+.newsLetterFooter {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 50%;
 }
 
 /* carousel */
@@ -574,6 +598,7 @@ dialog::backdrop {
 img {
   vertical-align: middle;
 }
+
 /* Slideshow container */
 .slideshow-container {
   max-width: 1000px;
@@ -658,6 +683,7 @@ img {
   from {
     opacity: 0.4;
   }
+
   to {
     opacity: 1;
   }

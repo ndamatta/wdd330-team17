@@ -1,5 +1,9 @@
 import Alert from "./alert.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
+import NewsLetterSignUp from "./signUpDialog.mjs";
+
+const newsLetter = new NewsLetterSignUp();
+newsLetter.init();
 
 loadHeaderFooter();
 

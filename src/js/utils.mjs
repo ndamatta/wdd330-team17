@@ -1,23 +1,21 @@
-import Alert from "./alert.mjs";
+// utils.mjs
 
-// wrapper for querySelector...returns matching element
-export function qs(selector, parent = document) {
-  return parent.querySelector(selector);
-}
-// or a more concise version if you are into that sort of thing:
-// export const qs = (selector, parent = document) => parent.querySelector(selector);
+import Alert from "./alert.mjs";
 
 const alert = new Alert();
 
-// retrieve data from localstorage
+export function qs(selector, parent = document) {
+  return parent.querySelector(selector);
+}
+
 export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
-// save data to local storage
+
 export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
-// set a listener for both touchend and click
+
 export function setClick(selector, callback) {
   qs(selector).addEventListener("touchend", (event) => {
     event.preventDefault();
@@ -80,6 +78,7 @@ export function updateCartBadge() {
   }
   document.querySelector(".cart-count").innerHTML = cartCount;
 }
+
 export function zoomAnimation() {
   const icon = document.querySelector("#cartIconSvg");
   icon.style.transform = "scale(1.3)";
@@ -115,4 +114,11 @@ export function stringToDotNotation(object, textAttributes) {
     }
   }
   return objs;
+}
+
+export function formDataToJSON(formElement) {
+  const formData = new FormData(formElement);
+  let jsonResult = {};
+  formData.forEach((value, key) => (jsonResult[key] = value));
+  return jsonResult;
 }
